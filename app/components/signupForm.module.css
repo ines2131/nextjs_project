@@ -1,0 +1,48 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.label {
+  font-size: 14px;
+  color: #171717;
+}
+
+.inputWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.input {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.checkboxWrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.checkbox {
+  margin-right: 10px;
+  width: 15px;
+  height: 15px;
+}
+
+.signinButton {
+  padding: 12px;
+  background: var(--main);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  margin: 10px 0px 10px 0px;
+}
+
+.signinButton:hover {
+  background: var(--mainDark);
+}

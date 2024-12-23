@@ -31,6 +31,11 @@ export default function MainSearch() {
           <label className={styles.label}>When</label>
           <input className={styles.input} type="date" />
         </div>
+        {/* Time */}
+        <div className={styles.inputGroup}>
+          <label className={styles.label}>Time</label>
+          <input className={styles.input} type="time" />
+        </div>
         {/* Search Button */}
         <button className={styles.searchButton}>Search</button>
       </div>
