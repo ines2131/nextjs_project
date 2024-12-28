@@ -46,3 +46,13 @@
 .signinButton:hover {
   background: var(--mainDark);
 }
+
+.error {
+  color: #ff4d4f;
+  font-size: 12px;
+  font-weight: bold;
+  max-width: 100%; /* Constrain to the width of the container */
+  overflow-wrap: break-word; /* Break long words to prevent overflow */
+  white-space: normal; /* Allow text to wrap onto the next line */
+  display: block; /* Ensure the error message behaves like a block element */
+}

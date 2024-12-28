@@ -10,7 +10,7 @@ export default function Signin() {
         <div className={styles.titleWrapper}>
           <h1 className={styles.title}>Sign In</h1>
           <div className={styles.subText}>
-            Don't have a Courtsite account yet?{" "}
+            Don't have a AceSpace account yet?{" "}
             <Link href="/signup" className={styles.link}>
               Sign Up
             </Link>
