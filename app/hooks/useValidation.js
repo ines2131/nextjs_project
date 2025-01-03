@@ -16,7 +16,7 @@ export default function useValidation() {
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
     if (!password) return "Password is required";
     if (!passwordRegex.test(password))
-      return "Password must be 8+ characters with upper, lower, number & symbol.";
+      return "8+ characters with upper, lower, number & symbol";
 
     return null;
   };

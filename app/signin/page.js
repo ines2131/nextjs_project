@@ -1,7 +1,7 @@
 import Link from "next/link";
 import styles from "./signin.module.css";
-import SigninForm from "../components/signinForm";
-import SocialForm from "../components/socialForm";
+import SigninForm from "../components/signin/SigninForm";
+import SocialForm from "../components/signin/SocialForm";
 
 export default function Signin() {
   return (

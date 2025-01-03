@@ -5,7 +5,7 @@ import { authOptions } from "@/pages/api/auth/[...nextauth]";
 
 export default async function Navbar() {
   let session = await getServerSession(authOptions);
-  console.log(session);
+
   return (
     <div className={styles.container}>
       <Link href="/" className={styles.home}>

@@ -2,7 +2,9 @@
 
 import { useState, useEffect } from "react";
 import styles from "./signupForm.module.css";
-import useValidation from "../hooks/useValidation";
+import useValidation from "../../hooks/useValidation";
+import EmailInput from "./EmailInput";
+import { useRouter } from "next/navigation";
 
 export default function SignupForm() {
   const [formData, setFormData] = useState({
@@ -13,8 +15,10 @@ export default function SignupForm() {
     requiredData: false,
   });
   const [error, setError] = useState(null);
+  const [emailStatus, setEmailStatus] = useState("");
   const [success, setSuccess] = useState(null);
   const { validateForm, validateField, errors, setErrors } = useValidation();
+  const router = useRouter();
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -30,6 +34,7 @@ export default function SignupForm() {
       const error = validateField(name, value);
       setErrors((prev) => ({ ...prev, [name]: error }));
     }
+
     // Validate confirmPassword on blur
     if (name === "confirmPassword") {
       const error =
@@ -83,6 +88,7 @@ export default function SignupForm() {
         promotions: false,
         requiredData: false,
       });
+      router.replace("/");
     } catch (error) {
       console.error("Error signing up:", error);
       setError("An unexpected error occurred. Please try again.");
@@ -102,17 +108,12 @@ export default function SignupForm() {
       <label htmlFor="email" className={styles.label}>
         Email
       </label>
-      <input
-        type="email"
-        id="email"
-        name="email"
+      <EmailInput
         value={formData.email}
-        onChange={handleChange}
-        onBlur={handleBlur}
-        className={styles.input}
-        required
+        onChange={(e) => handleChange(e)}
+        onBlur={(e) => handleBlur(e)}
+        error={errors.email}
       />
-      {errors.email && <p className={styles.error}>{errors.email}</p>}
 
       <label htmlFor="password" className={styles.label}>
         Password
@@ -173,7 +174,7 @@ export default function SignupForm() {
         )}
       </div>
 
-      <button type="submit" className={styles.signinButton}>
+      <button type="submit" className={styles.signupButton}>
         Sign Up
       </button>
     </form>

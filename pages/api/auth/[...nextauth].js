@@ -4,6 +4,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import GithubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
 import { MongoDBAdapter } from "@next-auth/mongodb-adapter";
+import bcrypt from "bcrypt";
 
 export const authOptions = {
   providers: [
@@ -35,10 +36,12 @@ export const authOptions = {
           credentials.password,
           user.password
         );
+
         if (!pwcheck) {
           console.log("Password is not correct");
           return null;
         }
+
         return user;
       },
     }),
@@ -62,11 +65,15 @@ export const authOptions = {
       session.user = token.user;
       return session;
     },
+
+    redirect: async ({ baseUrl }) => {
+      return baseUrl; // Always redirects to the site's root
+    },
   },
 
   adapter: MongoDBAdapter(connectDB),
-  secret: process.env.NEXTAUTH_SECRET, // Move secrets to .env
-  debug: true, // Optional: Enable debug mode
+  secret: process.env.NEXTAUTH_SECRET,
+  debug: true,
 };
 
 export default NextAuth(authOptions);
