@@ -1,6 +1,5 @@
 import localFont from "next/font/local";
 import "./globals.css";
-y;
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import Navbar from "./components/layout/navbar";
