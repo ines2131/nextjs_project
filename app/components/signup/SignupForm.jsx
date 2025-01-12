@@ -88,7 +88,7 @@ export default function SignupForm() {
         promotions: false,
         requiredData: false,
       });
-      router.replace("/");
+      router.replace("/signup");
     } catch (error) {
       console.error("Error signing up:", error);
       setError("An unexpected error occurred. Please try again.");
