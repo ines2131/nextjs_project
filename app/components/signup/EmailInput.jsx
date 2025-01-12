@@ -1,9 +1,15 @@
 import { useState } from "react";
 import styles from "./emailInput.module.css";
 
-export default function EmailInput({ value, onChange, onBlur, error }) {
+export default function EmailInput({
+  value,
+  onChange,
+  onBlur,
+  error,
+  setEmailChecked,
+}) {
   const [emailStatus, setEmailStatus] = useState("");
-  const [statusType, setStatusType] = useState(""); // Added to track status type
+  const [statusType, setStatusType] = useState("");
 
   const handleEmailCheck = async () => {
     if (!value) {
@@ -23,9 +29,11 @@ export default function EmailInput({ value, onChange, onBlur, error }) {
       if (exists) {
         setEmailStatus("This email is already registered.");
         setStatusType("error");
+        setEmailChecked(false);
       } else {
         setEmailStatus("Email is available.");
         setStatusType("success");
+        setEmailChecked(true);
       }
     } catch {
       setEmailStatus("Error checking email. Please try again.");
