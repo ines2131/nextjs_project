@@ -1,0 +1,39 @@
+.container {
+  height: 10vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  border-bottom: 1px solid #eaeaea;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 0px 40px 0px 40px;
+}
+
+.home {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #00d26a;
+  letter-spacing: 0px;
+  cursor: pointer;
+}
+
+.home:hover {
+  color: #03c75a;
+}
+
+.signupBtn {
+  background-color: #00d26a;
+  color: white;
+  border: none;
+  padding: 10px 24px;
+  font-size: 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.signupBtn:hover {
+  background-color: #03c75a;
+}
