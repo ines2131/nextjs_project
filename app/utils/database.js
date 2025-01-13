@@ -1,15 +1,21 @@
 const { MongoClient } = require("mongodb");
 
 const uri = process.env.MONGO_URI;
-const options = { useNewUrlParser: true };
+
+if (!uri) {
+  throw new Error("MONGO_URI is not defined in the environment variables.");
+}
+
+const options = { useNewUrlParser: true, useUnifiedTopology: true };
 let connectDB;
 
 if (process.env.NODE_ENV === "development") {
-  if (!global._mongo) {
-    global._mongo = new MongoClient(uri, options).connect();
+  if (!global._mongoClientPromise) {
+    global._mongoClientPromise = new MongoClient(uri, options).connect();
   }
-  connectDB = global._mongo;
+  connectDB = global._mongoClientPromise;
 } else {
   connectDB = new MongoClient(uri, options).connect();
 }
-export { connectDB };
+
+module.exports = { connectDB };
