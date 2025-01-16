@@ -43,3 +43,19 @@ a {
     color-scheme: dark;
   }
 }
+/* Define common breakpoints */
+@media (max-width: 1200px) {
+  /* Styles for laptops and desktops */
+}
+
+@media (max-width: 992px) {
+  /* Styles for tablets and small laptops */
+}
+
+@media (max-width: 768px) {
+  /* Styles for tablets and large phones */
+}
+
+@media (max-width: 576px) {
+  /* Styles for small phones */
+}

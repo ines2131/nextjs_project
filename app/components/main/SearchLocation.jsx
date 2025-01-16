@@ -1,8 +1,7 @@
 import { useState } from "react";
 import styles from "./mainSearch.module.css";
 
-export default function SearchLocation() {
-  const [location, setLocation] = useState("");
+export default function SearchLocation({ location, setLocation }) {
   const regions = [
     "NORTH",
     "WAN CHAI",

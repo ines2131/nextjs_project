@@ -3,23 +3,32 @@
 import React, { useState } from "react";
 import styles from "./mainSearch.module.css";
 import SearchLocation from "./SearchLocation";
+import { useRouter } from "next/navigation";
 
 export default function MainSearch() {
   const [sport, setSport] = useState("");
+  const [location, setLocation] = useState("");
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
-  const [searchResults, setSearchResults] = useState([]);
+  const router = useRouter();
 
-  const handleSearch = async () => {
-    try {
-      const response = await fetch(
-        `api/search?sport=${sport}&location=${location}&date=${date}&time=${time}`
-      );
-      const data = await response.json();
-      setSearchResults(data);
-    } catch (error) {
-      console.error("Error fetching search results:", error);
-    }
+  const timeOptions = [];
+  for (let hour = 6; hour <= 23; hour++) {
+    const formattedHour = hour < 10 ? `0${hour}` : `${hour}`;
+    timeOptions.push(`${formattedHour}:00`);
+  }
+
+  const handleSearch = () => {
+    // Build the query string for the URL
+    const query = new URLSearchParams({
+      sport,
+      location,
+      date,
+      time,
+    }).toString();
+
+    // Redirect to the search-result page with query parameters
+    router.push(`/search-result?${query}`);
   };
 
   return (
@@ -34,11 +43,14 @@ export default function MainSearch() {
             value={sport}
             onChange={(e) => setSport(e.target.value)}
           >
-            <option value="">Tennis</option>
-            <option value="">Badminton</option>
+            <option value="" disabled>
+              Select a sport
+            </option>
+            <option value="tennis">Tennis</option>
+            <option value="badminton">Badminton</option>
           </select>
         </div>
-        <SearchLocation />
+        <SearchLocation location={location} setLocation={setLocation} />
         {/* Date */}
         <div className={styles.inputGroup}>
           <label className={styles.label}>When</label>
@@ -52,12 +64,20 @@ export default function MainSearch() {
         {/* Time */}
         <div className={styles.inputGroup}>
           <label className={styles.label}>Time</label>
-          <input
+          <select
             className={styles.input}
-            type="time"
             value={time}
             onChange={(e) => setTime(e.target.value)}
-          />
+          >
+            <option value="" disabled>
+              Select a time
+            </option>
+            {timeOptions.map((timeOption, index) => (
+              <option key={index} value={timeOption}>
+                {timeOption}
+              </option>
+            ))}
+          </select>
         </div>
         {/* Search Button */}
         <button className={styles.searchButton} onClick={handleSearch}>
