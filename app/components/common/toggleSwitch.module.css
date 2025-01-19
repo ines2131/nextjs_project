@@ -1,0 +1,54 @@
+/* Container for the toggle switch */
+.toggleContainer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Label styling */
+.label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  color: #333;
+  cursor: pointer;
+}
+
+/* Hide the default checkbox */
+.checkbox {
+  display: none;
+}
+
+/* Slider styling */
+.slider {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+  background-color: #ccc;
+  border-radius: 20px;
+  transition: 0.3s;
+}
+
+/* Circle inside the slider */
+.slider:before {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background-color: white;
+  border-radius: 50%;
+  top: 2px;
+  left: 2px;
+  transition: 0.3s;
+}
+
+/* Change slider color and position when checked */
+.checkbox:checked + .slider {
+  background-color: #007bff;
+}
+
+.checkbox:checked + .slider:before {
+  transform: translateX(20px);
+}

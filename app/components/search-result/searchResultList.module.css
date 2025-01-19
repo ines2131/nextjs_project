@@ -1,0 +1,112 @@
+.toggle-map-button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.toggle-map-button:hover {
+  background-color: #0056b3;
+}
+
+/* 전체 컨테이너 스타일 */
+.listContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* 각 리스트 아이템 */
+.listItem {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 16px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.listItem:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* 코트 이름 스타일 */
+.courtName {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  margin: 0;
+}
+
+/* 주소 스타일 */
+.address {
+  font-size: 14px;
+  color: #666;
+  margin: 0;
+}
+
+/* 위치 정보 */
+.location {
+  font-size: 14px;
+  color: #888;
+  margin: 0;
+}
+
+/* 버튼 스타일 */
+.bookBtn {
+  align-self: flex-start;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.bookBtn:hover {
+  background-color: #0056b3;
+}
+
+/* 로딩 메시지 */
+.loading {
+  font-size: 16px;
+  color: #666;
+  text-align: center;
+  margin: 20px 0;
+}
+
+/* 결과 없음 메시지 */
+.noResults {
+  font-size: 16px;
+  color: #ff4d4f;
+  text-align: center;
+  margin: 20px 0;
+}
+
+@media (max-width: 768px) {
+  .listContainer {
+    padding: 10px;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .listItem {
+    padding: 12px;
+  }
+
+  .bookBtn {
+    width: 100%;
+    text-align: center;
+  }
+}

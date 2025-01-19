@@ -1,0 +1,9 @@
+.container {
+  margin: 20px 40px;
+}
+
+.headerWrapper {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0px;
+}
